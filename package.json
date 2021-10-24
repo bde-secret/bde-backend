@@ -1,0 +1,27 @@
+{
+  "name": "bde-backend",
+  "version": "1.0.0",
+  "description": "Backend project of BDE",
+  "main": "src/index.ts",
+  "scripts": {
+    "serve": "node src/index.ts",
+    "install": "npm install",
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bde-secret/bde-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bde-secret/bde-backend/issues"
+  },
+  "homepage": "https://github.com/bde-secret/bde-backend#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "jest": "^27.3.1",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.4.4"
+  }
+}
