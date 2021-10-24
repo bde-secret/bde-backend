@@ -1,3 +1,4 @@
 test("HelloWorld test", () => {
-  expect("Hello World").toBe("Hello World");
+  const helloWorld: string = "Hello World !";
+  expect(helloWorld).toBe(helloWorld);
 });
