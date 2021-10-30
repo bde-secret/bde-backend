@@ -36,7 +36,10 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
     "pre-commit": "^1.2.2",
+    "sequelize": "^6.8.0",
     "ts-node": "^10.4.0"
   }
 }
