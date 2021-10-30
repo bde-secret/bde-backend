@@ -29,9 +29,13 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.4.1
 
-      # Runs a single command using the runners shell
+      # Install all needed dependency to run the server
       - name: Install dependency
         run: npm run install-dependency
+
+      # Coding style
+      - name: ESLINT - check coding style
+        run: npm run eslint
 
       # Runs a set of commands using the runners shell
       - name: Run test
