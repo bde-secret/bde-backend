@@ -10,6 +10,10 @@
     "eslint-fix": "npx eslint --fix \"./**/*.ts\" \"./**/*.js\"",
     "test": "npx jest"
   },
+  "pre-commit": [
+    "eslint",
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bde-secret/bde-backend.git"
@@ -31,6 +35,8 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "express": "^4.17.1",
+    "pre-commit": "^1.2.2",
     "ts-node": "^10.4.0"
   }
 }

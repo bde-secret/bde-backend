@@ -1,4 +1,5 @@
+import {helloWorld} from './hello-world';
+
 test('HelloWorld test', () => {
-  const helloWorld: string = 'Hello World !';
-  expect(helloWorld).toBe(helloWorld);
+  expect(helloWorld()).toBe('Hello World!');
 });
