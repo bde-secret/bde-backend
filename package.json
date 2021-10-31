@@ -8,7 +8,8 @@
     "install-dependency": "npm install",
     "eslint": "npx eslint \"./**/*.ts\" \"./**/*.js\"",
     "eslint-fix": "npx eslint --fix \"./**/*.ts\" \"./**/*.js\"",
-    "test": "npx jest"
+    "test": "npx jest",
+    "password-hash": "npx ts-node src/script/password-hash/password-hash.script.ts"
   },
   "pre-commit": [
     "eslint",
@@ -35,11 +36,13 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "pre-commit": "^1.2.2",
     "sequelize": "^6.8.0",
+    "sequelize-cli": "^6.2.0",
     "ts-node": "^10.4.0"
   }
 }

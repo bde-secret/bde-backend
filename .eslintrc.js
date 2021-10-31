@@ -17,5 +17,8 @@ module.exports = {
   'rules': {
     'max-len': ['error', 150],
     'indent': ['error', 2],
+    'valid-jsdoc': ['off'],
+    'require-jsdoc': ['off'],
+    'object-curly-spacing': ['error', 'always'],
   },
 };

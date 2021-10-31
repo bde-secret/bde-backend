@@ -1,5 +1,5 @@
-import {Model, DataTypes} from 'sequelize';
-import {sequelize} from 'index';
+import { Model, DataTypes } from 'sequelize';
+import { sequelize } from 'index';
 
 /**
  * Represent User table
