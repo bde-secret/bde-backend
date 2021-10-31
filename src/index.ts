@@ -1,21 +1,12 @@
 import { helloWorld } from './hello-world';
-import { Sequelize } from 'sequelize';
+import { sequelize } from './app-sequelize';
+import { app } from './app';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { UserController } from './api/user/user.controller';
 
-export const sequelize = new Sequelize('bde', 'bde', 'password', {
-  host: 'localhost',
-  dialect: 'postgres',
-});
+new UserController();
 
-
-// Create express connection
-const express = require('express');
-const app = express();
 const port = 8080;
-
-app.get('/', (req: any, res: any) => {
-  res.send(helloWorld());
-});
-
 app.listen(port, () => {
   console.log(helloWorld());
   sequelize

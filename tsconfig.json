@@ -10,7 +10,8 @@
       "removeComments": true,
       "sourceMap": true,
       "strictNullChecks": true,
-      "target": "ES6"
+      "target": "ES6",
+      "experimentalDecorators": true
   },
 
   "include": [
