@@ -9,7 +9,10 @@
     "eslint": "npx eslint \"./**/*.ts\" \"./**/*.js\"",
     "eslint-fix": "npx eslint --fix \"./**/*.ts\" \"./**/*.js\"",
     "test": "npx jest",
-    "password-hash": "npx ts-node src/script/password-hash/password-hash.script.ts"
+    "password-hash": "npx ts-node src/script/password-hash/password-hash.script.ts",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
+    "db:migrate:create": "npx sequelize-cli migration:create --name"
   },
   "pre-commit": [
     "eslint",
