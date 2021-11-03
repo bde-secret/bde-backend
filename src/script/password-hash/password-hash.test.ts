@@ -1,4 +1,4 @@
-import { PasswordHash } from './password-hash';
+import { PasswordHash } from 'src/script/password-hash/password-hash';
 
 describe('# Password Hash', () => {
   test('Should verify the hash of a simple password', async () => {

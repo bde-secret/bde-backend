@@ -1,18 +1,18 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from 'index';
+import { sequelize } from 'src/app-sequelize';
 
 /**
  * Represent User table
  */
 export class User extends Model {
-  public id: number;
-  public userName: string;
-  public passwordHash: string;
-  public token: string;
+  public id!: number;
+  public userName!: string;
+  public passwordHash!: string;
+  public token!: string;
 
-  public readonly createdAt: string;
-  public readonly updateAt: string;
-  public readonly deletedAt: string;
+  public readonly createdAt!: string;
+  public readonly updateAt!: string;
+  public readonly deletedAt!: string;
 }
 
 User.init({
@@ -34,6 +34,6 @@ User.init({
     allowNull: true,
   },
 }, {
-  tableName: 'users',
+  tableName: 'Users',
   sequelize: sequelize,
 });

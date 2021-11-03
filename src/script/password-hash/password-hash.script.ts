@@ -1,4 +1,4 @@
-import { PasswordHash } from './password-hash';
+import { PasswordHash } from 'src/script/password-hash/password-hash';
 
 const main = async () => {
   if (process.argv.length !== 3) {

@@ -1,8 +1,8 @@
-import { helloWorld } from './hello-world';
-import { sequelize } from './app-sequelize';
-import { app } from './app';
+import { sequelize } from 'src/app-sequelize';
+import { helloWorld } from 'src/hello-world';
+import { app } from 'src/app';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { UserController } from './api/user/user.controller';
+import { UserController } from 'src/api/user/user.controller';
 
 new UserController();
 

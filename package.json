@@ -4,12 +4,12 @@
   "description": "Backend project of BDE",
   "main": "src/index.ts",
   "scripts": {
-    "serve": "npx ts-node src/index.ts",
+    "serve": "cross-env NODE_PATH=./ nodemon -x ts-node ./src/index.ts",
     "install-dependency": "npm install",
     "eslint": "npx eslint \"./**/*.ts\" \"./**/*.js\"",
     "eslint-fix": "npx eslint --fix \"./**/*.ts\" \"./**/*.js\"",
     "test": "npx jest",
-    "password-hash": "npx ts-node src/script/password-hash/password-hash.script.ts",
+    "password-hash": "cross-env NODE_PATH=./ ts-node src/script/password-hash/password-hash.script.ts",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
     "db:migrate:create": "npx sequelize-cli migration:create --name"
@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/bde-secret/bde-backend#readme",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
@@ -41,6 +42,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "express": "^4.17.1",
+    "nodemon": "^2.0.14",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "pre-commit": "^1.2.2",
