@@ -1,18 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 
-protected_branch='master'
-current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
-
-if [ $protected_branch = $current_branch ]
-then
-	read -p "You're about to push on main, is that what you intended? [y|n] " -n 1 -r < /dev/tty
-	echo
-
-	if echo $REPLY | grep -E '^[Yy]$' > /dev/null
-	then
-		exit 0 # push will execute
-	fi
-	exit 1 # push will not execute
-else
-	exit 0 # push will execute
-fi
+DEFAULT_BRANCH=$(git symbolic-ref HEAD)
+while read -r oldrev newrev refname; do
+  if [[ "${refname}" != "${DEFAULT_BRANCH:=refs/heads/master}" ]]; then
+    continue
+  else
+    if [[ "${GITHUB_VIA}" != 'pull request merge button' && \
+          "${GITHUB_VIA}" != 'pull request merge api' ]]; then
+      echo "Changes to the default branch must be made by Pull Request. Direct pushes, edits, or merges are not allowed."
+      exit 1
+    else
+      continue
+    fi
+  fi
+done
