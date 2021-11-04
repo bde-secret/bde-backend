@@ -6,18 +6,16 @@
   "scripts": {
     "serve": "cross-env NODE_PATH=./ nodemon -x ts-node ./src/index.ts",
     "install-dependency": "npm install",
-    "eslint": "npx eslint \"./**/*.ts\" \"./**/*.js\"",
-    "eslint-fix": "npx eslint --fix \"./**/*.ts\" \"./**/*.js\"",
+    "eslint": "eslint --ext .ts,.js --cache",
+    "eslint-fix": "lint-staged",
+    "eslint-no-cache": "eslint --fix --ext .ts,.js",
     "test": "npx jest",
     "password-hash": "cross-env NODE_PATH=./ ts-node src/script/password-hash/password-hash.script.ts",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:migrate:undo": "npx sequelize-cli db:migrate:undo",
-    "db:migrate:create": "npx sequelize-cli migration:create --name"
+    "db:migrate:create": "npx sequelize-cli migration:create --name",
+    "prepare": "husky install"
   },
-  "pre-commit": [
-    "eslint",
-    "test"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bde-secret/bde-backend.git"
@@ -33,9 +31,12 @@
     "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
+    "detect-secrets": "^1.0.6",
     "eslint": "^8.1.0",
     "eslint-config-google": "^0.14.0",
+    "husky": "^7.0.4",
     "jest": "^27.3.1",
+    "lint-staged": "^11.2.6",
     "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"
   },
@@ -49,5 +50,8 @@
     "sequelize": "^6.8.0",
     "sequelize-cli": "^6.2.0",
     "ts-node": "^10.4.0"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix --cache"
   }
 }
