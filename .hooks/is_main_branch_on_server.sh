@@ -2,7 +2,7 @@
 
 DEFAULT_BRANCH=$(git symbolic-ref HEAD)
 while read -r oldrev newrev refname; do
-  if [[ "${refname}" != "${DEFAULT_BRANCH:=refs/heads/master}" ]]; then
+  if [[ "${refname}" != "${DEFAULT_BRANCH:=refs/heads/main}" ]]; then
     continue
   else
     if [[ "${GITHUB_VIA}" != 'pull request merge button' && \
