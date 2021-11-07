@@ -1,6 +1,10 @@
 import { User } from 'src/orm/user';
 
 describe('# Start init data', () => {
+  test('# Truncate all table', async () => {
+    await User.truncate();
+  });
+
   test('# Create an admin user', async () => {
     await User.create({
       userName: 'alois',
