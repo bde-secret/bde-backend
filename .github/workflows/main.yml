@@ -31,7 +31,7 @@ jobs:
 
       # Install all needed dependency to run the server
       - name: Install dependency
-        run: npm run install-dependency
+        run: npm run yarn
 
       # Coding style
       - name: ESLINT - check coding style
