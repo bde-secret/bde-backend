@@ -4,7 +4,7 @@ import { app } from 'src/app';
 const port = 8080;
 
 app.listen(port, () => {
-  console.log('Hello World!');
+  console.log('Hello World !');
   sequelize
     .authenticate()
     .then(() => {
