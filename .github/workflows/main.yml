@@ -40,6 +40,10 @@ jobs:
       # Run the database
       - name: Start the database
         run: docker-compose up -d db
+
+      # Create the table
+      - name: Create database table
+        run: yarn db:migrate
       
       # Run the init-data test
       - name: Run Init-data test
