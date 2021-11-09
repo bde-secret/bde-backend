@@ -37,6 +37,18 @@ jobs:
       - name: ESLINT - check coding style
         run: yarn eslint
 
+      # Run the database
+      - name: Start the database
+        run: docker-compose up -d db
+
+      # Create the table
+      - name: Create database table
+        run: yarn db:migrate
+      
+      # Run the init-data test
+      - name: Run Init-data test
+        run: yarn init-db
+
       # Runs a set of commands using the runners shell
       - name: Run test
         run: yarn test
