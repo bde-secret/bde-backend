@@ -28,4 +28,8 @@ export class LoginController {
 
     res.json({ accessToken: loginService.createJWT(user) });
   };
+
+  public static async getMyInformation(req: any, res: any): Promise<void> {
+    res.send(req.user);
+  }
 }

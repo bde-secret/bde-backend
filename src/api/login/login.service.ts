@@ -4,6 +4,9 @@ import jwt from 'jsonwebtoken';
 import { UserModel, UserVerify } from 'src/api/login/login.model';
 
 export class loginService {
+  public static secretToken = // TODO: Export secretToken
+    'c5f013629d6eee5bc685cd0151897a2e8535c72ae2e42110ea24ad617af3d1cda690f97d3e528b8d0670f20b090404b485113c4ae4caff24248a6c9a112f9595';
+
   public static async verifyUser(userVerify: UserVerify): Promise<UserModel | null> {
     const user = await User.unscoped().findOne({
       attributes: ['id', 'userName', 'passwordHash'],
@@ -23,8 +26,18 @@ export class loginService {
   }
 
   public static createJWT(user: UserModel) {
-    const secretToken = // TODO: Export secretToken
-    'c5f013629d6eee5bc685cd0151897a2e8535c72ae2e42110ea24ad617af3d1cda690f97d3e528b8d0670f20b090404b485113c4ae4caff24248a6c9a112f9595';
-    return jwt.sign(user, secretToken);
+    return jwt.sign(user, loginService.secretToken);
+  }
+
+  public static authenticateToken(req: any, res: any, next: any) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+    if (token == null) return res.sendStatus(401);
+
+    jwt.verify(token, loginService.secretToken, (err: any, user: any) => {
+      if (err) return res.sendStatus(403);
+      req.user = user;
+      next();
+    });
   }
 }

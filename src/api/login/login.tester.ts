@@ -11,4 +11,10 @@ export class LoginTester {
     }
     return response;
   }
+
+  public static async checkMe(user: { token: string }, expectedStatusCode: number = 200) {
+    const response = await request(app).get('/me').set({ Authorization: `Bearer ${user.token}` }).send();
+    expect(response.statusCode).toBe(expectedStatusCode);
+    return response;
+  }
 }

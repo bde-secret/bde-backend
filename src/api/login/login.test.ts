@@ -30,6 +30,18 @@ describe('# Login Test', () => {
     await LoginTester.checkLogin({ userName: 'alois', password: 'alois' }, 200);
   });
 
+  it('> Get Me information with incorrect JWT', async () => {
+    const user = { token: 'coucou' };
+    await LoginTester.checkMe(user, 403);
+  });
+
+  it('> Get Me information', async () => {
+    const response = await LoginTester.checkLogin({ userName: 'alois', password: 'alois' }, 200);
+    const user = { token: response.body.accessToken };
+    const responseMe = await LoginTester.checkMe(user);
+    expect(responseMe.body.userName).toBe('alois');
+  });
+
   afterAll((done) => {
     done();
   });
