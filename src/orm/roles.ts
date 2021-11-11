@@ -24,7 +24,7 @@ Role.init({
     allowNull: false,
   },
   permissions: {
-    type: new DataTypes.JSONB,
+    type: DataTypes.JSONB,
     allowNull: true,
   },
 }, {
