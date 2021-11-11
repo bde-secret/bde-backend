@@ -1,6 +1,10 @@
 import { User } from 'src/orm/user';
 
 describe('# Start init data', () => {
+  beforeAll((done) => {
+    done();
+  });
+
   test('# Truncate all table', async () => {
     await User.truncate();
   });
@@ -10,5 +14,9 @@ describe('# Start init data', () => {
       userName: 'alois',
       passwordHash: '$2b$10$5Dhg67SGYJ1FoWp2nPVFoe/StXEy4fPZVUavBY.9jEtksCwbUIgmu',
     });
+  });
+
+  afterAll((done) => {
+    done();
   });
 });

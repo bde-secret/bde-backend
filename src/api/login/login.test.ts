@@ -2,6 +2,10 @@ import { UserVerify } from 'src/api/login/login.model';
 import { LoginTester } from 'src/api/login/login.tester';
 
 describe('# Login Test', () => {
+  beforeAll((done) => {
+    done();
+  });
+
   it('> Try to login without a login info', async () => {
     await LoginTester.checkLogin({ userName: null, password: null } as unknown as UserVerify, 404, '\"userName\" must be a string');
   });
@@ -24,5 +28,9 @@ describe('# Login Test', () => {
 
   it('> Try to login with correct information', async () => {
     await LoginTester.checkLogin({ userName: 'alois', password: 'alois' }, 200);
+  });
+
+  afterAll((done) => {
+    done();
   });
 });
