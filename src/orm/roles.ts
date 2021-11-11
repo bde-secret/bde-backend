@@ -2,36 +2,30 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from 'src/app-sequelize';
 
 /**
- * Represent User table
+ * Represent Role table
  */
-export class User extends Model {
+export class Role extends Model {
   public id!: number;
-  public roleId!: number;
-  public userName!: string;
-  public passwordHash!: string;
+  public roleName!: string;
+  public permissions!: any;
 
   public readonly createdAt!: string;
   public readonly updateAt!: string;
-  public readonly deletedAt!: string;
 }
 
-User.init({
+Role.init({
   id: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
     primaryKey: true,
   },
-  roleId: {
-    type: DataTypes.INTEGER.UNSIGNED,
-    allowNull: true,
-  },
-  userName: {
+  roleName: {
     type: new DataTypes.STRING(128),
     allowNull: false,
   },
-  passwordHash: {
-    type: new DataTypes.STRING(1024),
-    allowNull: false,
+  permissions: {
+    type: new DataTypes.JSONB,
+    allowNull: true,
   },
 }, {
   tableName: 'Users',
