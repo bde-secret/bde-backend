@@ -40,6 +40,7 @@ describe('# Login Test', () => {
     const user = { token: response.body.accessToken };
     const responseMe = await LoginTester.checkMe(user);
     expect(responseMe.body.userName).toBe('alois');
+    expect(responseMe.body.roleName).toBe('admin');
   });
 
   afterAll((done) => {

@@ -6,4 +6,6 @@ export interface UserVerify {
 export interface UserModel {
   userName: string,
   id: number,
+  roleName?: string,
+  permissions?: string[],
 }

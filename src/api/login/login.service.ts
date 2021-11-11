@@ -2,6 +2,7 @@ import { User } from 'src/orm/user';
 import { PasswordHash } from 'src/script/password-hash/password-hash';
 import jwt from 'jsonwebtoken';
 import { UserModel, UserVerify } from 'src/api/login/login.model';
+import { Role } from 'src/orm/roles';
 
 export class loginService {
   public static secretToken = // TODO: Export secretToken
@@ -11,6 +12,12 @@ export class loginService {
     const user = await User.unscoped().findOne({
       attributes: ['id', 'userName', 'passwordHash'],
       where: { userName: userVerify.userName },
+      include: [
+        {
+          model: Role,
+          attributes: ['roleName', 'id', 'permissions'],
+        },
+      ],
     });
 
     if (!user) {
@@ -22,7 +29,12 @@ export class loginService {
       return null;
     }
 
-    return { userName: user.userName, id: user.id };
+    return {
+      userName: user.userName,
+      id: user.id,
+      roleName: user.Role?.roleName,
+      permissions: user.Role?.permissions.permissionsList,
+    };
   }
 
   public static createJWT(user: UserModel) {

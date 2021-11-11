@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from 'src/app-sequelize';
+import { Role } from './roles';
 
 /**
  * Represent User table
@@ -7,6 +8,7 @@ import { sequelize } from 'src/app-sequelize';
 export class User extends Model {
   public id!: number;
   public roleId!: number;
+  public Role?: Role;
   public userName!: string;
   public passwordHash!: string;
 
@@ -37,3 +39,5 @@ User.init({
   tableName: 'Users',
   sequelize: sequelize,
 });
+
+User.belongsTo(Role, { foreignKey: 'roleId' });

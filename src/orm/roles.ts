@@ -28,6 +28,6 @@ Role.init({
     allowNull: true,
   },
 }, {
-  tableName: 'Users',
+  tableName: 'Roles',
   sequelize: sequelize,
 });
