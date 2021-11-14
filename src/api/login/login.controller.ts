@@ -1,20 +1,16 @@
 import { loginService } from 'src/api/login/login.service';
 import { UserModel, UserVerify } from 'src/api/login/login.model';
+import { validate } from 'src/decorator/data.decorator';
 import Joi from 'joi';
 
 export class LoginController {
-  public static async login(req: any, res: any): Promise<void> {
-    const schema = Joi.object({
+  @validate({
+    body: Joi.object({
       userName: Joi.string().required(),
       password: Joi.string().required(),
-    });
-
-    const valide = schema.validate(req.body);
-    if (valide.error) {
-      res.status(404).send(valide.error.details[0].message);
-      return;
-    }
-
+    }),
+  })
+  public static async login(req: any, res: any): Promise<void> {
     const userVerify: UserVerify = {
       userName: req.body.userName,
       password: req.body.password,

@@ -16,7 +16,7 @@ describe('# Start init data', () => {
   });
 
   test('# Create an admin role', async () => {
-    adminRole = await RoleService.createRole({ roleName: 'admin', permissions: { permissionsList: ['createRole'] } });
+    adminRole = await RoleService.createRole({ roleName: 'admin', permissions: { permissions: ['createRole'] } });
   });
 
   test('# Create an admin user', async () => {

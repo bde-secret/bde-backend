@@ -3,20 +3,25 @@ import { createLoginRoute } from 'src/api/login/login.route';
 
 const express = require('express');
 export const app = express();
-app.use(express.json());
 
 const port = 8080;
+let alreadyListen: boolean = false;
 
-app.listen(port, () => {
-  console.log('Hello World!');
-  sequelize
-    .authenticate()
-    .then(() => {
-      console.log('DB CONNECTED');
-    })
-    .catch(() => {
-      console.log('DB ERROR CONNECTING');
-    });
-});
+if (!alreadyListen) {
+  app.use(express.json());
+
+  app.listen(port, () => {
+    console.log('Hello World!');
+    sequelize
+      .authenticate()
+      .then(() => {
+        console.log('DB CONNECTED');
+      })
+      .catch(() => {
+        console.log('DB ERROR CONNECTING');
+      });
+  });
+  alreadyListen = true;
+}
 
 createLoginRoute();

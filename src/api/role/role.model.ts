@@ -4,5 +4,5 @@ export interface RoleCreate {
 }
 
 export interface permissions {
-  permissionsList: string[];
+  permissions: string[];
 }

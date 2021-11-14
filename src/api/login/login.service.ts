@@ -33,7 +33,7 @@ export class loginService {
       userName: user.userName,
       id: user.id,
       roleName: user.Role?.roleName,
-      permissions: user.Role?.permissions.permissionsList,
+      permissions: user.Role?.permissions.permissions,
     };
   }
 
@@ -41,6 +41,7 @@ export class loginService {
     return jwt.sign(user, loginService.secretToken);
   }
 
+  // Use this midleware to check if a person is login
   public static authenticateToken(req: any, res: any, next: any) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
