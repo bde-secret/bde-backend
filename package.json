@@ -5,8 +5,8 @@
   "main": "src/index.ts",
   "scripts": {
     "serve": "cross-env NODE_PATH=./ nodemon -x ts-node ./src/index.ts",
-    "test": "npx jest src/api/* src/script/*",
-    "init-db": "npx jest src/init-data/*",
+    "test": "npx jest src/api/* src/script/* --runInBand --forceExit",
+    "init-db": "npx jest src/init-data/* --runInBand --forceExit",
     "eslint": "eslint --ext .ts,.js --cache",
     "eslint-fix": "lint-staged",
     "eslint-no-cache": "eslint --fix --ext .ts,.js",
@@ -30,6 +30,8 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/jest": "^27.0.2",
+    "@types/jsonwebtoken": "^8.5.5",
+    "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
     "detect-secrets": "^1.0.6",
@@ -44,6 +46,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "express": "^4.17.1",
+    "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.14",
     "pg": "^8.7.1",
@@ -51,6 +54,7 @@
     "pre-commit": "^1.2.2",
     "sequelize": "^6.8.0",
     "sequelize-cli": "^6.2.0",
+    "supertest": "^6.1.6",
     "ts-node": "^10.4.0"
   },
   "lint-staged": {

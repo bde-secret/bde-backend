@@ -1,23 +1,20 @@
 'use strict';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('Roles', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      userName: {
+      roleName: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
-      passwordHash: {
-        type: Sequelize.STRING,
-      },
-      roleId: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        default: null,
+      permissions: {
+        type: Sequelize.JSONB,
       },
       createdAt: {
         allowNull: false,
@@ -28,9 +25,5 @@ module.exports = {
         type: Sequelize.DATE,
       },
     });
-  },
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Users');
   },
 };
