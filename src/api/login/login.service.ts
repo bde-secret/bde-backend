@@ -53,4 +53,8 @@ export class loginService {
       next();
     });
   }
+
+  public static notAuthenticate(req: any, res: any, next: any) {
+    next();
+  }
 }

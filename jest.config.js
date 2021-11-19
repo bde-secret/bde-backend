@@ -13,7 +13,7 @@ module.exports = {
     '<rootDir>/src',
   ],
   testEnvironment: 'node',
-  collectCoverage: true,
+  collectCoverage: false,
   coverageThreshold: {
     global: { lines: 90 },
   },

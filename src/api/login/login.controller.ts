@@ -7,7 +7,7 @@ import { HTTP_METHOD, swagger } from 'src/decorator/swagger.decorator';
 export class LoginController {
   public static init() {};
 
-  @swagger(HTTP_METHOD.POST, '/login', 'Connect a user')
+  @swagger(HTTP_METHOD.POST, '/login', 'Connect a user', false)
   @validate({
     body: Joi.object({
       userName: Joi.string().required(),
