@@ -1,5 +1,6 @@
 import { sequelize } from 'src/app-sequelize';
-import { createLoginRoute } from 'src/api/login/login.route';
+import { generateRoute } from './decorator/swagger.decorator';
+import { LoginController } from './api/login/login.controller';
 
 const express = require('express');
 export const app = express();
@@ -21,7 +22,9 @@ if (!alreadyListen) {
         console.log('DB ERROR CONNECTING');
       });
   });
+
+  LoginController.init();
+  generateRoute(app);
+
   alreadyListen = true;
 }
-
-createLoginRoute();

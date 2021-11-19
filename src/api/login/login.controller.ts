@@ -2,8 +2,12 @@ import { loginService } from 'src/api/login/login.service';
 import { UserModel, UserVerify } from 'src/api/login/login.model';
 import { validate } from 'src/decorator/data.decorator';
 import Joi from 'joi';
+import { HTTP_METHOD, swagger } from 'src/decorator/swagger.decorator';
 
 export class LoginController {
+  public static init() {};
+
+  @swagger(HTTP_METHOD.POST, '/login', 'Connect a user')
   @validate({
     body: Joi.object({
       userName: Joi.string().required(),
@@ -25,6 +29,7 @@ export class LoginController {
     res.json({ accessToken: loginService.createJWT(user) });
   };
 
+  @swagger(HTTP_METHOD.GET, '/me', 'Get me information')
   public static async getMyInformation(req: any, res: any): Promise<void> {
     res.send(req.user);
   }
