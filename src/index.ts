@@ -1,22 +1,7 @@
-import { sequelize } from 'src/app-sequelize';
-import { createLoginRoute } from 'src/api/login/login.route';
+import app from 'src/app';
+import { Logger } from './logger/logger';
 
-const express = require('express');
-export const app = express();
-app.use(express.json());
-
-const port = 8080;
-
+const port = 8000;
 app.listen(port, () => {
-  console.log('Hello World!');
-  sequelize
-    .authenticate()
-    .then(() => {
-      console.log('DB CONNECTED');
-    })
-    .catch(() => {
-      console.log('DB ERROR CONNECTING');
-    });
+  Logger.success('Server started');
 });
-
-createLoginRoute();

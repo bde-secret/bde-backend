@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { app } from 'src/index';
+import app from 'src/app';
 import { UserVerify } from 'src/api/login/login.model';
 
 export class LoginTester {
@@ -16,5 +16,10 @@ export class LoginTester {
     const response = await request(app).get('/me').set({ Authorization: `Bearer ${user.token}` }).send();
     expect(response.statusCode).toBe(expectedStatusCode);
     return response;
+  }
+
+  public static async getUserToken(userName: string, password: string) {
+    const response = await (await LoginTester.checkLogin({ userName, password }));
+    return { token: response.body.accessToken };
   }
 }

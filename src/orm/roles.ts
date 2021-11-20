@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from 'src/app-sequelize';
+import { sequelize } from 'src/sequelize';
 
 /**
  * Represent Role table
@@ -24,7 +24,7 @@ Role.init({
     allowNull: false,
   },
   permissions: {
-    type: new DataTypes.JSONB,
+    type: DataTypes.JSONB,
     allowNull: true,
   },
 }, {

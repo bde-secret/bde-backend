@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from 'src/app-sequelize';
+import { sequelize } from 'src/sequelize';
 import { Role } from './roles';
 
 /**
