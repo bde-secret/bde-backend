@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize';
+import { Logger } from './logger/logger';
 
 // Connect to the database
 export const sequelize = new Sequelize('bde', 'bde', 'password', {
@@ -8,5 +9,5 @@ export const sequelize = new Sequelize('bde', 'bde', 'password', {
 sequelize.authenticate()
   .then(() => {})
   .catch(() => {
-    console.log('Error: Unable to connect to the database');
+    Logger.error('Unable to connect to the database');
   });

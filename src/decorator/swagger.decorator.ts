@@ -1,4 +1,5 @@
 import { loginService } from 'src/api/login/login.service';
+import { CONSOLE_COLOR, Logger } from 'src/logger/logger';
 
 export enum HTTP_METHOD {
   GET = 'get',
@@ -34,11 +35,22 @@ function pushRoute(method: HTTP_METHOD, route: string, description: string, opti
   routeToBeGenerated.push({ method, route, description, execute, options });
 }
 
+function generateLoggerMessage(route: Route) {
+  Logger.custom(CONSOLE_COLOR.BgGreen, [
+    {
+      messgae: route.method.toUpperCase(),
+      color: [CONSOLE_COLOR.BgBlue, CONSOLE_COLOR.FgWhite, CONSOLE_COLOR.Bright],
+    },
+    {
+      messgae: ` ${route.route} - ${route.description}`,
+    },
+  ]);
+}
+
 export function generateRoute(app: any) {
   routeToBeGenerated.forEach(async (routeItem) => {
     const auth = routeItem.options.authEnabled ? loginService.authenticateToken : loginService.notAuthenticate;
-
-    console.log(`${routeItem.method.toUpperCase()}: ${routeItem.route} - ${routeItem.description}`);
+    generateLoggerMessage(routeItem);
     switch (routeItem.method) {
     case HTTP_METHOD.GET:
       app.get(routeItem.route, auth, (req: any, res: any) => {
@@ -61,13 +73,19 @@ export function generateRoute(app: any) {
       });
       break;
     default:
-      console.log('Unable to find method');
+      Logger.error('Unable to find method');
       break;
     }
   });
 
   // Generate swagger route
-  console.log('GET: /swagger - Get all route information');
+  generateLoggerMessage({
+    method: HTTP_METHOD.GET,
+    route: '/swagger',
+    description: 'Get all route',
+    execute: () => {},
+    options: { authEnabled: false },
+  });
   app.get('/swagger', (req: any, res: any) => {
     res.send(routeToBeGenerated);
   });
