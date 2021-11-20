@@ -5,6 +5,7 @@ import { Logger } from './logger/logger';
 export const sequelize = new Sequelize('bde', 'bde', 'password', {
   host: 'localhost',
   dialect: 'postgres',
+  logging: Logger.message,
 });
 sequelize.authenticate()
   .then(() => {})
