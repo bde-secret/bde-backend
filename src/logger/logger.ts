@@ -33,19 +33,19 @@ export interface CustomMesssage {
 
 export class Logger {
   public static message(m: string): void {
-    console.log(`\x1b[44m \x1b[0m ${m}`);
+    console.log(`${CONSOLE_COLOR.BgCyan} ${CONSOLE_COLOR.Reset} ${m}`);
   }
 
   public static success(m: string): void {
-    console.log(`\x1b[42m \x1b[0m ${m}`);
+    console.log(`${CONSOLE_COLOR.BgGreen} ${CONSOLE_COLOR.Reset} ${m}`);
   }
 
   public static error(m: string): void {
-    console.log(`\x1b[41m \x1b[0m ${m}`);
+    console.log(`${CONSOLE_COLOR.BgRed} ${CONSOLE_COLOR.Reset} ${m}`);
   }
 
   public static custom(status: CONSOLE_COLOR, m: CustomMesssage[]) {
-    let message = `${status} ${CONSOLE_COLOR.Reset}`;
+    let message = `${status} ${CONSOLE_COLOR.Reset} `;
     m.forEach((customMessage) => {
       customMessage.color?.forEach((color) => {
         message += color;

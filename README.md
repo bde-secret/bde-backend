@@ -7,7 +7,8 @@ Hello and welcome to the backend of the project bde-secret
 You first need to install the dependencie,
 To do so you can use
 ```
-npm run install
+npm run yarn
+npm run generate-config
 ```
 
 The database use docker to start it you can use

@@ -3,11 +3,9 @@ import { PasswordHash } from 'src/script/password-hash/password-hash';
 import jwt from 'jsonwebtoken';
 import { UserModel, UserVerify } from 'src/api/login/login.model';
 import { Role } from 'src/orm/roles';
+import { config } from 'src/.config';
 
 export class loginService {
-  public static secretToken = // TODO: Export secretToken
-    'c5f013629d6eee5bc685cd0151897a2e8535c72ae2e42110ea24ad617af3d1cda690f97d3e528b8d0670f20b090404b485113c4ae4caff24248a6c9a112f9595';
-
   public static async verifyUser(userVerify: UserVerify): Promise<UserModel | null> {
     const user = await User.unscoped().findOne({
       attributes: ['id', 'userName', 'passwordHash'],
@@ -38,7 +36,7 @@ export class loginService {
   }
 
   public static createJWT(user: UserModel) {
-    return jwt.sign(user, loginService.secretToken);
+    return jwt.sign(user, config.secretToken);
   }
 
   // Use this midleware to check if a person is login
@@ -47,7 +45,7 @@ export class loginService {
     const token = authHeader && authHeader.split(' ')[1];
     if (token == null) return res.sendStatus(401);
 
-    jwt.verify(token, loginService.secretToken, (err: any, user: any) => {
+    jwt.verify(token, config.secretToken, (err: any, user: any) => {
       if (err) return res.sendStatus(403);
       req.user = user;
       next();

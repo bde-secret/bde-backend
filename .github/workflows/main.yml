@@ -37,6 +37,10 @@ jobs:
       - name: ESLINT - check coding style
         run: yarn eslint
 
+      # Generate config file
+      - name: Generate config file
+        run: npm run generate-config
+
       # Run the database
       - name: Start the database
         run: docker-compose up -d db
