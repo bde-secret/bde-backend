@@ -7,30 +7,36 @@ export enum HTTP_METHOD {
   PUT = 'put',
 }
 
+interface Option {
+  authEnabled: boolean,
+}
+
 interface Route {
   method: HTTP_METHOD;
   route: string;
   description: string;
   execute: any;
-  authentificationNeeded: boolean,
+  options: Option,
 }
 
 const routeToBeGenerated: Route[] = [];
 
-export function swagger(method: HTTP_METHOD, route: string, description: string = '', authentificationNeeded: boolean = true) {
+export function swag(method: HTTP_METHOD, route: string, description: string = '', options: Option = {
+  authEnabled: true,
+}) {
   return function(target: object, key: string | symbol, descriptor: PropertyDescriptor) {
-    pushRoute(method, route, description, authentificationNeeded, descriptor.value);
+    pushRoute(method, route, description, options, descriptor.value);
     return descriptor;
   };
 }
 
-function pushRoute(method: HTTP_METHOD, route: string, description: string, authentificationNeeded: boolean, execute: any) {
-  routeToBeGenerated.push({ method, route, description, execute, authentificationNeeded });
+function pushRoute(method: HTTP_METHOD, route: string, description: string, options: Option, execute: any) {
+  routeToBeGenerated.push({ method, route, description, execute, options });
 }
 
 export function generateRoute(app: any) {
   routeToBeGenerated.forEach(async (routeItem) => {
-    const auth = routeItem.authentificationNeeded ? loginService.authenticateToken : loginService.notAuthenticate;
+    const auth = routeItem.options.authEnabled ? loginService.authenticateToken : loginService.notAuthenticate;
 
     console.log(`${routeItem.method.toUpperCase()}: ${routeItem.route} - ${routeItem.description}`);
     switch (routeItem.method) {
