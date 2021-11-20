@@ -1,33 +1,23 @@
-import { RoleService } from 'src/api/role/role.service';
-import { Role } from 'src/orm/roles';
-import { User } from 'src/orm/user';
-import { PasswordHash } from 'src/script/password-hash/password-hash';
+import { PERMISSION } from 'src/api/permission/permission.model';
+import { RoleModel } from 'src/api/role/role.model';
+import { globalTester } from './global.tester';
 
 describe('# Start init data', () => {
-  let adminRole: Role;
-
-  beforeAll((done) => {
-    done();
-  });
+  let adminRole: RoleModel;
 
   test('# Truncate all table', async () => {
-    await User.truncate();
-    await Role.truncate();
+    await globalTester.truncateTable();
   });
 
   test('# Create an admin role', async () => {
-    adminRole = await RoleService.createRole({ roleName: 'admin', permissions: { permissionsList: ['createRole'] } });
+    adminRole = await globalTester.spawnRole('admin', [PERMISSION.ROLE_MANAGEMENT]);
   });
 
   test('# Create an admin user', async () => {
-    await User.create({
-      userName: 'alois',
-      passwordHash: await PasswordHash.getPasswordHash('alois'),
-      roleId: adminRole.id,
-    });
+    await globalTester.spawnUser('alois', 'alois', adminRole.id);
   });
 
-  afterAll((done) => {
-    done();
+  test('# Create a user without role', async () => {
+    await globalTester.spawnUser('Jeremy', 'alois');
   });
 });
