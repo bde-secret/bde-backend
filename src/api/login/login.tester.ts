@@ -17,4 +17,9 @@ export class LoginTester {
     expect(response.statusCode).toBe(expectedStatusCode);
     return response;
   }
+
+  public static async getUserToken(userName: string, password: string) {
+    const response = await (await LoginTester.checkLogin({ userName, password }));
+    return { token: response.body.accessToken };
+  }
 }

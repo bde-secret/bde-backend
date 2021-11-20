@@ -1,9 +1,10 @@
-import { RoleCreate } from 'src/api/role/role.model';
+import { RoleCreate, RoleModel } from 'src/api/role/role.model';
 import { Role } from 'src/orm/roles';
 
 export class RoleService {
-  public static async createRole(role: RoleCreate): Promise<Role> {
-    return Role.create(role);
+  public static async createRole(role: RoleCreate): Promise<RoleModel> {
+    const { id, roleName, permissions } = await Role.create(role);
+    return { id, roleName, permissions };
   }
 
   public static async updateRole(roleId: string, roleName: string, permissions: string[]): Promise<Role | null> {

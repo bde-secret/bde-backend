@@ -1,9 +1,12 @@
 import { UserVerify } from 'src/api/login/login.model';
 import { LoginTester } from 'src/api/login/login.tester';
+import { globalTester } from 'src/init-data/global.tester';
 
 describe('# Login Test', () => {
-  beforeAll((done) => {
-    done();
+  it('> startup', async () => {
+    await globalTester.truncateTable();
+    const adminRole = await globalTester.spawnRole('admin', ['createRole']);
+    await globalTester.spawnUser('alois', 'alois', adminRole.id);
   });
 
   it('> Try to login without a login info', async () => {
@@ -41,9 +44,5 @@ describe('# Login Test', () => {
     const responseMe = await LoginTester.checkMe(user);
     expect(responseMe.body.userName).toBe('alois');
     expect(responseMe.body.roleName).toBe('admin');
-  });
-
-  afterAll((done) => {
-    done();
   });
 });
