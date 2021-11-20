@@ -65,4 +65,10 @@ export function generateRoute(app: any) {
       break;
     }
   });
+
+  // Generate swagger route
+  console.log('GET: /swagger - Get all route information');
+  app.get('/swagger', (req: any, res: any) => {
+    res.send(routeToBeGenerated);
+  });
 }
