@@ -1,3 +1,5 @@
+import { PERMISSION } from 'src/api/permission/permission.model';
+import { RoleModel } from 'src/api/role/role.model';
 import { RoleService } from 'src/api/role/role.service';
 import { Role } from 'src/orm/roles';
 import { User } from 'src/orm/user';
@@ -9,7 +11,7 @@ export class globalTester {
     await Role.truncate();
   }
 
-  public static async spawnRole(roleName: string, permissions: string[] = []): Promise<Role> {
+  public static async spawnRole(roleName: string, permissions: PERMISSION[] = []): Promise<RoleModel> {
     return RoleService.createRole({ roleName, permissions: { permissions } });
   };
 

@@ -1,5 +1,6 @@
 import { globalTester } from 'src/init-data/global.tester';
 import { LoginTester } from '../login/login.tester';
+import { PERMISSION } from '../permission/permission.model';
 import { RoleTester } from './role.tester';
 
 describe('# Role Test', () => {
@@ -8,7 +9,7 @@ describe('# Role Test', () => {
 
   it('> Setup', async () => {
     await globalTester.truncateTable();
-    const adminRole = await globalTester.spawnRole('admin', ['createRole']);
+    const adminRole = await globalTester.spawnRole('admin', [PERMISSION.ROLE_MANAGEMENT]);
     const menberRole = await globalTester.spawnRole('membre', []);
     await globalTester.spawnUser('alois', 'alois', adminRole.id);
     await globalTester.spawnUser('Jeremy', 'alois', menberRole.id);
@@ -29,7 +30,7 @@ describe('# Role Test', () => {
   });
 
   it('> Create a role with permissions', async () => {
-    const permissions = ['createRole'];
+    const permissions = [PERMISSION.ROLE_MANAGEMENT];
     await RoleTester.checkCreateRole(adminUser, { roleName: 'admin2', permissions });
   });
 });

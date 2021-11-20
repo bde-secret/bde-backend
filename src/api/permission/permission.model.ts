@@ -1,3 +1,3 @@
 export enum PERMISSION {
-  CreateRole = 'createRole',
+  ROLE_MANAGEMENT = 'roleManagement',
 };

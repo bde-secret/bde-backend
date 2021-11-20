@@ -1,3 +1,5 @@
+import { PERMISSION } from 'src/api/permission/permission.model';
+
 export interface RoleCreate {
   roleName: string;
   permissions?: permissions;
@@ -6,9 +8,9 @@ export interface RoleCreate {
 export interface RoleModel {
   roleName: string,
   id: number,
-  permissions: string[];
+  permissions: PERMISSION[];
 }
 
 export interface permissions {
-  permissions: string[];
+  permissions: PERMISSION[];
 }

@@ -16,7 +16,7 @@ export class RoleController {
       permissions: Joi.array().items(Joi.string().required()).optional(),
     }),
   })
-  @hasPermission(PERMISSION.CreateRole)
+  @hasPermission(PERMISSION.ROLE_MANAGEMENT)
   public static async createRole(req: any, res: any) {
     const roleToBeCreated: RoleCreate = { ...req.body };
     const role = await RoleService.createRole(roleToBeCreated);

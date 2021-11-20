@@ -1,11 +1,12 @@
 import { UserVerify } from 'src/api/login/login.model';
 import { LoginTester } from 'src/api/login/login.tester';
 import { globalTester } from 'src/init-data/global.tester';
+import { PERMISSION } from '../permission/permission.model';
 
 describe('# Login Test', () => {
   it('> startup', async () => {
     await globalTester.truncateTable();
-    const adminRole = await globalTester.spawnRole('admin', ['createRole']);
+    const adminRole = await globalTester.spawnRole('admin', [PERMISSION.ROLE_MANAGEMENT]);
     await globalTester.spawnUser('alois', 'alois', adminRole.id);
   });
 
