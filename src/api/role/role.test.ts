@@ -1,6 +1,6 @@
 import { globalTester } from 'src/init-data/global.tester';
-import { LoginTester } from '../login/login.tester';
-import { PERMISSION } from '../permission/permission.model';
+import { LoginTester } from 'src/api/login/login.tester';
+import { PERMISSION } from 'src/api/permission/permission.model';
 import { RoleModel } from './role.model';
 import { RoleTester } from './role.tester';
 

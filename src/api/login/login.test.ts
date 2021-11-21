@@ -1,7 +1,7 @@
 import { UserVerify } from 'src/api/login/login.model';
 import { LoginTester } from 'src/api/login/login.tester';
 import { globalTester } from 'src/init-data/global.tester';
-import { PERMISSION } from '../permission/permission.model';
+import { PERMISSION } from 'src/api/permission/permission.model';
 
 describe('# Login Test', () => {
   it('> startup', async () => {

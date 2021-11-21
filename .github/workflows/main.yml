@@ -37,6 +37,13 @@ jobs:
       - name: Start the database
         run: docker-compose up -d db
 
+      # Setup Submodule
+      - name: Submodule init
+        run: git submodule init
+
+      - name: Submodule update
+        run: git submodule update
+
       # Coding style
       - name: ESLINT - check coding style
         run: yarn eslint
