@@ -33,6 +33,10 @@ jobs:
       - name: Install dependency
         run: yarn install --frozen-lockfile
 
+      # Run the database
+      - name: Start the database
+        run: docker-compose up -d db
+
       # Coding style
       - name: ESLINT - check coding style
         run: yarn eslint
@@ -41,14 +45,10 @@ jobs:
       - name: Generate config file
         run: npm run generate-config
 
-      # Run the database
-      - name: Start the database
-        run: docker-compose up -d db
-
       # Create the table
       - name: Create database table
         run: yarn db:migrate
-      
+
       # Run the init-data test
       - name: Run Init-data test
         run: yarn init-db
