@@ -20,7 +20,7 @@ interface Route {
   options: Option,
 }
 
-const routeToBeGenerated: Route[] = [];
+export const routeToBeGenerated: Route[] = [];
 
 export function swag(method: HTTP_METHOD, route: string, description: string = '', options: Option = {
   authEnabled: true,
@@ -76,17 +76,5 @@ export function generateRoute(app: any) {
       Logger.error('Unable to find method');
       break;
     }
-  });
-
-  // Generate swagger route
-  generateLoggerMessage({
-    method: HTTP_METHOD.GET,
-    route: '/swagger',
-    description: 'Get all route',
-    execute: () => {},
-    options: { authEnabled: false },
-  });
-  app.get('/swagger', (req: any, res: any) => {
-    res.send(routeToBeGenerated);
   });
 }
