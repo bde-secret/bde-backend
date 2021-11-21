@@ -1,0 +1,3 @@
+[submodule "src/api/permission"]
+	path = src/api/permission
+	url = https://github.com/bde-secret/bde-permission.git
