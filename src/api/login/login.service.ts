@@ -8,12 +8,12 @@ import { config } from 'src/.config';
 export class loginService {
   public static async verifyUser(userVerify: UserVerify): Promise<UserModel | null> {
     const user = await User.unscoped().findOne({
-      attributes: ['id', 'userName', 'passwordHash'],
+      attributes: ['id', 'userName', 'passwordHash', 'roleId'],
       where: { userName: userVerify.userName },
       include: [
         {
           model: Role,
-          attributes: ['roleName', 'id', 'permissions'],
+          attributes: ['roleName'],
         },
       ],
     });
@@ -31,7 +31,7 @@ export class loginService {
       userName: user.userName,
       id: user.id,
       roleName: user.Role?.roleName,
-      permissions: user.Role?.permissions.permissions,
+      roleId: user.roleId,
     };
   }
 

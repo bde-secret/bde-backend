@@ -1,16 +1,16 @@
 import { PERMISSION } from 'src/api/permission/permission.model';
 
+export interface RoleUpdate extends RoleCreate {
+  id: number;
+}
+
 export interface RoleCreate {
   roleName: string;
-  permissions?: permissions;
+  permissions?: PERMISSION[];
 }
 
 export interface RoleModel {
-  roleName: string,
-  id: number,
-  permissions: PERMISSION[];
-}
-
-export interface permissions {
+  roleName: string;
+  id: number;
   permissions: PERMISSION[];
 }

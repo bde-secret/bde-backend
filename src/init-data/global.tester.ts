@@ -12,7 +12,7 @@ export class globalTester {
   }
 
   public static async spawnRole(roleName: string, permissions: PERMISSION[] = []): Promise<RoleModel> {
-    return RoleService.createRole({ roleName, permissions: { permissions } });
+    return RoleService.createRole({ roleName, permissions });
   };
 
   public static async spawnUser(userName: string, password: string, roleId: number | null = null) {

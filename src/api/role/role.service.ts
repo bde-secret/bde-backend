@@ -1,4 +1,4 @@
-import { RoleCreate, RoleModel } from 'src/api/role/role.model';
+import { RoleCreate, RoleModel, RoleUpdate } from 'src/api/role/role.model';
 import { Role } from 'src/orm/roles';
 
 export class RoleService {
@@ -7,15 +7,15 @@ export class RoleService {
     return { id, roleName, permissions };
   }
 
-  public static async updateRole(roleId: string, roleName: string, permissions: string[]): Promise<Role | null> {
-    const role = await Role.findByPk(roleId);
-    if (!role) {
+  public static async updateRole(role: RoleUpdate): Promise<RoleModel | null> {
+    const r = await Role.findByPk(role.id);
+    if (!r) {
       return null;
     }
-
-    role.roleName = roleName;
-    role.permissions = { permissions };
-    await role.save();
-    return role;
+    r.roleName = role.roleName;
+    r.permissions = role.permissions;
+    await r.save();
+    const { id, roleName, permissions } = r;
+    return { id, roleName, permissions: permissions };
   }
 }
