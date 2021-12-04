@@ -1,5 +1,5 @@
-import { Logger } from 'src/logger/logger';
-import { PasswordHash } from 'src/script/password-hash/password-hash';
+import { Logger } from '@logger/logger';
+import { PasswordHash } from '@script/password-hash/password-hash';
 
 const main = async () => {
   if (process.argv.length !== 3) {
@@ -12,4 +12,3 @@ const main = async () => {
 };
 
 main();
-

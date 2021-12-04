@@ -1,6 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from 'src/sequelize';
-import { Role } from './roles';
+import { Role } from '@orm/roles';
 
 /**
  * Represent User table

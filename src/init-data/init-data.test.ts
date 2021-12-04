@@ -1,6 +1,6 @@
-import { PERMISSION } from 'src/api/permission/permission.model';
-import { RoleModel } from 'src/api/role/role.model';
-import { globalTester } from './global.tester';
+import { PERMISSION } from '@api/permission/permission.model';
+import { RoleModel } from '@api/role/role.model';
+import { globalTester } from 'src/init-data/global.tester';
 
 describe('# Start init data', () => {
   let adminRole: RoleModel;

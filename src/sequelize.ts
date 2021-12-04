@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import { Logger } from './logger/logger';
+import { Logger } from '@logger/logger';
 
 // Connect to the database
 export const sequelize = new Sequelize('bde', 'bde', 'password', {

@@ -1,5 +1,5 @@
-import { loginService } from 'src/api/login/login.service';
-import { CONSOLE_COLOR, Logger } from 'src/logger/logger';
+import { loginService } from '@api/login/login.service';
+import { CONSOLE_COLOR, Logger } from '@logger/logger';
 
 export enum HTTP_METHOD {
   GET = 'get',

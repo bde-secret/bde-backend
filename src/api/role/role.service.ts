@@ -1,5 +1,5 @@
-import { RoleCreate, RoleModel, RoleUpdate } from 'src/api/role/role.model';
-import { Role } from 'src/orm/roles';
+import { RoleCreate, RoleModel, RoleUpdate } from '@api/role/role.model';
+import { Role } from '@orm/roles';
 
 export class RoleService {
   public static async createRole(role: RoleCreate): Promise<RoleModel> {

@@ -1,6 +1,6 @@
-import { UserModel } from 'src/api/login/login.model';
-import { PERMISSION } from 'src/api/permission/permission.model';
-import { Role } from 'src/orm/roles';
+import { UserModel } from '@api/login/login.model';
+import { PERMISSION } from '@api/permission/permission.model';
+import { Role } from '@orm/roles';
 
 export function hasPermission(permission: PERMISSION) {
   return function(target: object, key: string | symbol, descriptor: PropertyDescriptor) {

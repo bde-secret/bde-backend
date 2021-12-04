@@ -1,10 +1,10 @@
 import Joi from 'joi';
-import { validate } from 'src/decorator/data.decorator';
-import { hasPermission } from 'src/decorator/permission.decorator';
-import { HTTP_METHOD, swag } from 'src/decorator/swagger.decorator';
-import { PERMISSION } from 'src/api/permission/permission.model';
-import { RoleCreate, RoleUpdate } from './role.model';
-import { RoleService } from './role.service';
+import { validate } from '@decorator/data.decorator';
+import { hasPermission } from '@decorator/permission.decorator';
+import { HTTP_METHOD, swag } from '@decorator/swagger.decorator';
+import { PERMISSION } from '@api/permission/permission.model';
+import { RoleCreate, RoleUpdate } from '@api/role/role.model';
+import { RoleService } from '@api/role/role.service';
 
 export class RoleController {
   public static init() {};

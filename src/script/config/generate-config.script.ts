@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 import fs from 'fs';
-import { Logger } from 'src/logger/logger';
+import { Logger } from '@logger/logger';
 
 function generateConfigFile(fileName: string = 'src/.config.ts') {
   if (fs.existsSync(fileName)) {

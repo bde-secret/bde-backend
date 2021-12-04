@@ -1,8 +1,8 @@
-import { User } from 'src/orm/user';
-import { PasswordHash } from 'src/script/password-hash/password-hash';
+import { User } from '@orm/user';
+import { PasswordHash } from '@script/password-hash/password-hash';
 import jwt from 'jsonwebtoken';
-import { UserModel, UserVerify } from 'src/api/login/login.model';
-import { Role } from 'src/orm/roles';
+import { UserModel, UserVerify } from '@api/login/login.model';
+import { Role } from '@orm/roles';
 import { config } from 'src/.config';
 
 export class loginService {
