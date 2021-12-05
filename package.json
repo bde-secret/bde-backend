@@ -4,7 +4,7 @@
   "description": "Backend project of BDE",
   "main": "src/index.ts",
   "scripts": {
-    "serve": "NODE_PATH=./ nodemon -x ts-node  ./src/index.ts",
+    "serve": "NODE_PATH=./ nodemon -x ts-node ./src/index.ts",
     "test": "npx jest src/api/* src/script/* --runInBand --forceExit --coverage",
     "init-db": "npx jest src/init-data/* --runInBand --forceExit",
     "eslint": "eslint --ext .ts,.js --cache",
