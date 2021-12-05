@@ -1,8 +1,8 @@
-import { loginService } from 'src/api/login/login.service';
-import { UserModel, UserVerify } from 'src/api/login/login.model';
-import { validate } from 'src/decorator/data.decorator';
+import { loginService } from '@api/login/login.service';
+import { UserModel, UserVerify } from '@api/login/login.model';
+import { validate } from '@decorator/data.decorator';
 import Joi from 'joi';
-import { HTTP_METHOD, swag } from 'src/decorator/swagger.decorator';
+import { HTTP_METHOD, swag } from '@decorator/swagger.decorator';
 
 export class LoginController {
   public static init() {};

@@ -1,8 +1,8 @@
 import express from 'express';
-import { generateRoute } from './decorator/swagger.decorator';
-import { LoginController } from './api/login/login.controller';
-import { RoleController } from './api/role/role.controller';
-import { SwaggerControler } from './swagger/swagger.controler';
+import { generateRoute } from '@decorator/swagger.decorator';
+import { LoginController } from '@api/login/login.controller';
+import { RoleController } from '@api/role/role.controller';
+import { SwaggerControler } from '@api/swagger/swagger.controler';
 
 // Create the app
 const app = express();

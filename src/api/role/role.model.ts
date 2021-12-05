@@ -1,4 +1,4 @@
-import { PERMISSION } from 'src/api/permission/permission.model';
+import { PERMISSION } from '@api/permission/permission.model';
 
 export interface RoleUpdate extends RoleCreate {
   id: number;

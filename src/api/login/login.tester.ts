@@ -1,6 +1,6 @@
 import request from 'supertest';
 import app from 'src/app';
-import { UserVerify } from 'src/api/login/login.model';
+import { UserVerify } from '@api/login/login.model';
 
 export class LoginTester {
   public static async checkLogin(userVerify: UserVerify, expectedStatusCode: number = 200, errorMessage: string = '') {

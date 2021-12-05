@@ -1,4 +1,4 @@
-import { swag, HTTP_METHOD, routeToBeGenerated } from 'src/decorator/swagger.decorator';
+import { swag, HTTP_METHOD, routeToBeGenerated } from '@decorator/swagger.decorator';
 
 export class SwaggerControler {
   public static init() {}

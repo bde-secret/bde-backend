@@ -1,8 +1,8 @@
 import { globalTester } from 'src/init-data/global.tester';
-import { LoginTester } from 'src/api/login/login.tester';
-import { PERMISSION } from 'src/api/permission/permission.model';
-import { RoleModel } from './role.model';
-import { RoleTester } from './role.tester';
+import { LoginTester } from '@api/login/login.tester';
+import { PERMISSION } from '@api/permission/permission.model';
+import { RoleModel } from '@api/role/role.model';
+import { RoleTester } from '@api/role/role.tester';
 
 describe('# Role Test', () => {
   let adminUser: { token: string; };
