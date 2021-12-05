@@ -24,6 +24,12 @@ Port: 5432
 Db: bde
 ```
 
+Don't forget to update submodule
+```
+git submodule init
+git submodule update
+```
+
 ## How to run the server
 
 ```

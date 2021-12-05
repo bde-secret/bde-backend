@@ -8,6 +8,11 @@ module.exports = {
   },
   moduleNameMapper: {
     '^(src)/(.*)$': '<rootDir>/$1/$2',
+    '^@decorator/(.*)$': '<rootDir>/src/decorator/$1',
+    '^@logger/(.*)$': '<rootDir>/src/logger/$1',
+    '^@script/(.*)$': '<rootDir>/src/script/$1',
+    '^@orm/(.*)$': '<rootDir>/src/orm/$1',
+    '^@api/(.*)$': '<rootDir>/src/api/$1',
   },
   roots: [
     '<rootDir>/src',

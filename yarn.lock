@@ -4912,6 +4912,11 @@ ts-node@^10.4.0:
     make-error "^1.1.1"
     yn "3.1.1"
 
+tsconfig-paths-jest@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/tsconfig-paths-jest/-/tsconfig-paths-jest-0.0.1.tgz#a977a5648c434037b69884e644ce1b82bf025b68"
+  integrity sha1-qXelZIxDQDe2mITmRM4bgr8CW2g=
+
 tsconfig-paths@^3.12.0:
   version "3.12.0"
   resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.12.0.tgz#19769aca6ee8f6a1a341e38c8fa45dd9fb18899b"
